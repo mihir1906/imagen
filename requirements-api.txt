@@ -3,3 +3,13 @@ uvicorn[standard]==0.30.6
 pydantic==2.9.2
 python-multipart==0.0.9
 pillow==10.4.0
+
+
+# Diffusers stack
+diffusers==0.30.2
+transformers==4.44.2
+accelerate==0.34.2
+safetensors==0.4.5
+
+# PyTorch (CPU/MPS on macOS installs via default index)
+torch
