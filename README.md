@@ -1,4 +1,4 @@
-# Imagen — Client–Server Architecture
+# Imagen — Client–Server Architecture for Text-to-Image Generation
 
 This project is designed as a **client–server system**:
 - A **Server** (FastAPI) hosts the Stable Diffusion pipeline and the CLIP scorer.
@@ -137,14 +137,15 @@ Open: http://localhost:7860
 Type a **prompt**, optionally add a **negative prompt**, adjust **Height**, **Width**, **Steps**, and **Guidance**, then click **Generate**.  
 The output image appears on the right with the **CLIP score** displayed beneath it.
 
-![Prompts & Images](./result_images/last7_table.png)
+![Prompts & Images](./result_images/GradioUI.png)
+
 
 
 ##  Results
 
 **Sample Results**
 
-![Prompts & Images](./result_images/GradioUI.png)
+![Prompts & Images](./result_images/last7_table.png)
 
 **Experiment:** *Batched best-of-K (micro-batched)*
 
