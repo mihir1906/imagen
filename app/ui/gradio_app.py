@@ -31,7 +31,10 @@ def generate_ui(prompt, negative, height, width, steps, guidance):
     r = requests.post(f"{API_BASE}/generate", json=payload, timeout=600)
     r.raise_for_status()
     data = r.json()
-    return b64_to_image(data["image_base64"])
+    img = b64_to_image(data["image_base64"])
+    score = float(data.get("clip_score", 0.0))
+    score_txt = f"**CLIP score:** {score:.3f}"
+    return img, score_txt
 
 # Use a built-in theme (no CSS) and bump overall text size
 theme = gr.themes.Soft(primary_hue="orange", neutral_hue="slate")
@@ -56,8 +59,9 @@ with gr.Blocks(title="Imagen", theme=theme) as demo:
                     btn = gr.Button("Generate", variant="primary")
                 with gr.Column(scale=1):
                     out_img = gr.Image(label="Result", type="pil")
+                    clip_md = gr.Markdown("") 
 
-            btn.click(generate_ui, [prompt, negative, height, width, steps, guidance], [out_img])
+            btn.click(generate_ui, [prompt, negative, height, width, steps, guidance], [out_img, clip_md])
         gr.Column(scale=1)  # right spacer
 
 if __name__ == "__main__":

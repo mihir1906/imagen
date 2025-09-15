@@ -13,3 +13,4 @@ class GenerateRequest(BaseModel):
 class ImageResponse(BaseModel):
     image_base64: str
     seed: int
+    clip_score: float  

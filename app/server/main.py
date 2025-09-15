@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .schemas import GenerateRequest, ImageResponse
 from .pipelines import get_pipeline
 from .utils import to_base64, resolve_seed
+from .clipscore import get_clip_scorer
 
 app = FastAPI(title="Imagen API", version="0.1.0")
 
@@ -40,6 +41,16 @@ def generate_stub(req: GenerateRequest):
             guidance=guidance,
             seed=seed,
         )
-        return ImageResponse(image_base64=to_base64(img), seed=seed)
+
+         # Compute CLIP score (but never fail the request if this errors)
+        clip_score = 0.0
+        try:
+            scorer = get_clip_scorer()
+            clip_score = scorer.score(img, req.prompt)
+        except Exception as e:
+            print(f"[WARN] CLIP scoring failed: {e}")
+
+        return ImageResponse(image_base64=to_base64(img), seed=seed, clip_score=clip_score)
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
