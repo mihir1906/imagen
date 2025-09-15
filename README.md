@@ -158,9 +158,9 @@ The output image appears on the right with the **CLIP score** displayed beneath 
 
 | Metric                          | Value                |
 |---------------------------------|----------------------|
-| Latency per image (sec)         | **5.235**+<br>−**0.053**  |
+| Latency per image (sec)         | **5.235**±**0.053**  |
 | Images per minute               | **11.46**            |
-| Best-of-K CLIPScore per prompt  | **67.45**+<br>−**1.18**   |
+| Best-of-K CLIPScore per prompt  | **67.45**±**1.18**   |
 | GPU peak per micro-batch (GB)   | **12.23**            |
 
 > Notes: Measurements were recorded over **24** prompts on an **NVIDIA Tesla T4** (~15 GB) system.
