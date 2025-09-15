@@ -144,7 +144,7 @@ The output image appears on the right with the **CLIP score** displayed beneath 
 
 **Sample Results**
 
-![Prompts & Images](./result_images/last7_table.png)
+![Prompts & Images](./result_images/GradioUI.png)
 
 **Experiment:** *Batched best-of-K (micro-batched)*
 
